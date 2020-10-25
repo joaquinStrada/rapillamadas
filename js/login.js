@@ -15,7 +15,7 @@
   var firebaseConfig = {
     apiKey: "AIzaSyAWTOHItY5LkyMom0yZFlNH-Pkds0YQcKo",
     authDomain: "rapillamadas-882e8.firebaseapp.com",
-    databaseURL: "https://rapillamadas-882e8.firebaseio.com",
+    databaseURL: "https://rapillamadas-882e8.firebaseio.com/",
     projectId: "rapillamadas-882e8",
     storageBucket: "rapillamadas-882e8.appspot.com",
     messagingSenderId: "373224831583",
@@ -32,7 +32,9 @@
       var nombre_completo = txt_nombre.value;
       var pass = txt_pass.value;
       var pass_encript = btoa(pass);
+      if (CompararContraseñas(pass_encript)) {
 
+      }
     }
   });
   /*-----------------------------------*/
@@ -78,5 +80,13 @@
         }
       }
     }
+  }
+  function CompararContraseñas(pass) {
+    var dbRef = firebase.database();
+    /* var passRef = dbRef.ref("pass");
+    passRef.once("value")
+    .then((snap) => {
+      console.log(snap.val());
+    }); */
   }
 }())

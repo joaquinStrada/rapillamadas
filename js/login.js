@@ -8,6 +8,7 @@
   var alerta = document.getElementById("alerta");
   var icono_alerta = document.getElementById("icono-alerta");
   var texto_alerta = document.getElementById("texto-alerta");
+  var lleno = false;
   /*-----------------------------------*/
   /* Configuracion basica de firebase */
   /*-----------------------------------*/
@@ -28,13 +29,12 @@
   /*-----------------------------------*/
   formulario.addEventListener("submit", function (e) {
     e.preventDefault();
-    if (ValidarCampos()) {
+    if (ValidarCampos() && lleno == false) {
       var nombre_completo = txt_nombre.value;
       var pass = txt_pass.value;
       var pass_encript = btoa(pass);
-      if (CompararContraseñas(pass_encript)) {
-
-      }
+      // console.log(pass_encript);
+      CompararContraseñas(pass_encript);
     }
   });
   /*-----------------------------------*/
@@ -83,10 +83,50 @@
   }
   function CompararContraseñas(pass) {
     var dbRef = firebase.database();
-    /* var passRef = dbRef.ref("pass");
+    var passRef = dbRef.ref("pass");
     passRef.once("value")
     .then((snap) => {
-      console.log(snap.val());
-    }); */
+      var valPass = snap.val();
+      if (valPass == pass) {
+        Redireccionar();
+      } else {
+        Incorrecto();
+      }
+    });
   }
+  function Redireccionar() {
+    var dbRef = firebase.database();
+    var pepoleRef = dbRef.ref("pepole");
+    pepoleRef.once("value")
+    .then((snap) => {
+      var valPepole = snap.val();
+      valPepole ++;
+      pepoleRef.set(valPepole);
+    });
+    var nombre = txt_nombre.value;
+    sessionStorage.setItem('login', true);
+    sessionStorage.setItem('nombre', nombre);
+    setTimeout(function () {
+      window.location.href = "home.html";
+    }, 3000);
+  }
+  function Incorrecto() {
+    txt_pass.classList.add("error");
+    Alerta("red", "fas fa-times", "Contraseña Incorrecta",  3000)
+  }
+  function main() {
+    var dbRef = firebase.database();
+    var pepoleRef = dbRef.ref("pepole");
+    pepoleRef.once("value")
+    .then((snap) => {
+      var valPepole = snap.val();
+      if (valPepole >= 2) {
+        lleno = true;
+        icono_alerta.setAttribute("class", "fas fa-times");
+        texto_alerta.innerHTML = "La reunion ya esta llena";
+        alerta.classList.add("red");
+      }
+    });
+  }
+  main();
 }())

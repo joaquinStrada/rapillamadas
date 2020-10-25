@@ -117,3 +117,13 @@ body {
   background: #008f39;
   opacity: 1;
 }
+/*-----------------------------------*/
+/* estilos de los errores */
+/*-----------------------------------*/
+.formulario input.vacio {
+  border: 1px solid #FF0000;
+}
+.formulario input.error {
+  color: #FF0000;
+  border: 1px solid #FF0000;
+}

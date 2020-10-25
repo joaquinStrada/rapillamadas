@@ -37,3 +37,33 @@ body {
   text-align: center;
   margin-bottom: var(--separacion);
 }
+/*-----------------------------------*/
+/* estilos de los inputs y labels */
+/*-----------------------------------*/
+.formulario label,
+.formulario input {
+  display: block;
+  width: 100%;
+}
+/*-----------------------------------*/
+/* estilos de los labels */
+/*-----------------------------------*/
+.formulario label {
+  text-align: center;
+  margin-bottom: 5px;
+}
+/*-----------------------------------*/
+/* estilos de los inputs */
+/*-----------------------------------*/
+.formulario input {
+  padding: 10px;
+  font-size: 20px;
+  border: none;
+  border-radius: 100px;
+  margin-bottom: var(--separacion);
+  outline: none;
+  transition: all .3S ease;
+}
+.formulario input:focus {
+  border: 1px solid rgba(0, 0, 0, .2);
+}

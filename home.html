@@ -4,9 +4,46 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <link rel="stylesheet" href="fonts/css/all.min.css">
+  <link rel="stylesheet" href="fonts/roboto.css">
+  <title>Rapillamadas - Videollamada</title>
 </head>
 <body>
-
+  <div class="contenedor">
+    <div class="persona" id="persona-1">
+      <video src="media/firebase.mp4">
+      </video>
+      <div class="pie">
+        <div class="icono" id="content-icono">
+          <i class="fas fa-microphone" id="icono"></i>
+        </div>
+        <p id="nombre">Joaquin Strada</p>
+      </div>
+    </div>
+    <div class="persona" id="persona-2">
+      <video src="media/firebase.mp4">
+      </video>
+      <div class="pie">
+        <div class="icono" id="content-icono">
+          <i class="fas fa-microphone" id="icono"></i>
+        </div>
+        <p id="nombre">Joaquin Strada</p>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="controles">
+      <button type="button" class="microfono" id="microfono"><i class="fas fa-microphone" id="icono-microfono"></i></button>
+      <button type="button" class="colgar" id="colgar"><i class="fas fa-phone-alt"></i></button>
+      <button type="button" class="camara" id="camara"><i class="fas fa-video" id="icono-camara"></i></button>
+      <button type="button" class="cambiar-pass" id="cambiar-pass"><i class="fas fa-lock"></i>Cambiar Contraseña</button>
+    </div>
+  </footer>
+  <form class="formulario" id="formulario" method="post">
+    <i class="fas fa-times"></i>
+    <label for="pass">Nueva Contraseña:</label>
+    <input type="text" id="pass">
+    <button type="submit"><i class="fas fa-lock"></i>Cambiar Contraseña</button>
+  </form>
 </body>
 </html>
